@@ -5,10 +5,10 @@ module.exports = {
         const {id} = req.params
         let {user} = req.session
 
-        const index = user.cart.findIndex(swag => swag.id == id)
+        const index = user.cart.findIndex(swag => swag.id === +id)
 
         if(index ===-1){
-            const selectedSwag = swag.find(swag => swag.id == id)
+            const selectedSwag = swag.find(swag => swag.id === +id)
 
             user.cart.push(selectedSwag)
             user.total += selectedSwag.price
@@ -19,8 +19,8 @@ module.exports = {
         const {id} = req.params
         const {user} =req.session
         
-        const index = user.cart.findIndex(swag => swag.id == id)
-        const selectedSwag = swag.find(swag => swag.id == id)
+        const index = user.cart.findIndex(swag => swag.id === +id)
+        const selectedSwag = swag.find(swag => swag.id === +id)
 
         if(index !== -1){
             user.cart.splice(index, 1)

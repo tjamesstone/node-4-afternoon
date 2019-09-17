@@ -20,6 +20,7 @@ app.use(
     })
 )
 app.use(checkForSession)
+app.use(express.static(`${__dirname}/../build`))
 
 //ENDPOINTS
 //AUTH
