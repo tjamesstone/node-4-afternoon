@@ -1,10 +1,10 @@
 const users = require('../models/users')
-const id = 1
+let id = 1
 
 module.exports = {
     register: (req, res, next) => {
         const {session} = req
-        const {username, password = req.body}
+        const {username, password} = req.body
 
         users.push({id, username, password})
         id++
@@ -30,6 +30,7 @@ module.exports = {
         res.status(200).send(req.session) 
     },
     getUser: (req, res, next) => {
-        
+        const {session} = req;
+        res.status(200).send(session.user)
     }
 }
